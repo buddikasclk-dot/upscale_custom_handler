@@ -55,9 +55,10 @@ def handler(job):
         result_base64 = base64.b64encode(image_data).decode()
 
         return {
-            "success": True,
-            "image": result_base64
-        }
+    "success": True,
+    "image": output_base64,
+    "version": "v1-final"
+}
 
     except Exception as e:
         return {
@@ -67,4 +68,5 @@ def handler(job):
 
 
 runpod.serverless.start({"handler": handler})
+
 
