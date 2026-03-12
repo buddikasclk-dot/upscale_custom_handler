@@ -3,9 +3,17 @@ import requests
 import base64
 import json
 import time
+import subprocess
+
+# START COMFYUI
+subprocess.Popen(
+    ["python", "/workspace/ComfyUI/main.py", "--listen", "0.0.0.0", "--port", "8188"]
+)
+
+# wait for ComfyUI to boot
+time.sleep(10)
 
 COMFY_URL = "http://127.0.0.1:8188"
-
 def handler(job):
     try:
         input_data = job["input"]
@@ -68,5 +76,6 @@ def handler(job):
 
 
 runpod.serverless.start({"handler": handler})
+
 
 
