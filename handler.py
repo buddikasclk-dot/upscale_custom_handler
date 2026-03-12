@@ -22,7 +22,7 @@ def handler(job):
         upload = requests.post(f"{COMFY_URL}/upload/image", files=files)
         filename = upload.json()["name"]
 
-        with open("workflow_api.json") as f:
+        with open("Upscale_4x.json") as f:
             workflow = json.load(f)
 
         workflow["1"]["inputs"]["image"] = filename
@@ -67,3 +67,4 @@ def handler(job):
 
 
 runpod.serverless.start({"handler": handler})
+
